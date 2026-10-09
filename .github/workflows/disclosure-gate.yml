@@ -1,0 +1,16 @@
+name: disclosure-gate
+on:
+  workflow_call:
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check patent status before any public step
+        run: |
+          status=$(yq '.patent.status' .cycle/state.yml)
+          case "$status" in
+            filed|not_pursued) echo "Gate open: patent.status=$status" ;;
+            *) echo "::error::Disclosure gate closed (patent.status=$status). File or decline the patent first."
+               exit 1 ;;
+          esac

@@ -1,0 +1,20 @@
+cycle: 2027-H1
+week: 1
+idea:
+  id: N
+  title: ""
+  repo: ""
+patent:
+  status: pending_decision   # pending_decision | drafting | filed | not_pursued
+  provisional_no: ""
+  priority_date: ""
+  complete_spec_due: ""
+paper:
+  research: { journal: "", status: not_started }
+  software_impacts: { for_idea: N-1, status: not_started, code_ocean: "" }
+product:
+  stage: private             # private | beta | public | launched
+  demo_url: ""
+  product_hunt: not_ready
+open_gates: []
+log: []

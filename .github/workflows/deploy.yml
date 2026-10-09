@@ -1,0 +1,12 @@
+name: deploy
+on:
+  workflow_dispatch:
+jobs:
+  gate:
+    uses: ./.github/workflows/disclosure-gate.yml
+  deploy:
+    needs: gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO: deploy steps (see runbook section 10)"

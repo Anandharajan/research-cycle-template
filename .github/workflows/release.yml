@@ -1,0 +1,12 @@
+name: release
+on:
+  workflow_dispatch:
+jobs:
+  gate:
+    uses: ./.github/workflows/disclosure-gate.yml
+  release:
+    needs: gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO: release steps (see runbook section 10)"

@@ -1,0 +1,22 @@
+name: Weekly digest
+on:
+  schedule:
+    - cron: "17 12 * * 6"     # Saturday 17:47 IST
+  workflow_dispatch:
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    permissions: { contents: read, issues: write, id-token: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Read .cycle/state.yml, this week's merged PRs, CI results and results/*.json.
+            Open one issue titled "Readiness – week N" with: what shipped, test and benchmark
+            status, disclosure-gate status, open human gates, and the top 3 risks.
+          claude_args: |
+            --model claude-haiku-5-5
+            --max-turns 8
+            --allowedTools "mcp__github__list_pull_requests,mcp__github__create_issue,Read"
