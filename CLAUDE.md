@@ -13,3 +13,6 @@
 - Python 3.11+: ruff, mypy, pytest; coverage floor 70%. TS: eslint, tsc, vitest.
 - Fixed seeds for benchmarks; results to `results/*.json`; `make reproduce` regenerates figures.
 - Small PRs, one issue each; CI must pass; no force-push to main.
+
+## Git authorship
+- Commit only as `Anandharajan <anandharajan@hotmail.com>`. Never add `Co-Authored-By`, `Claude-Session` or "Generated with Claude Code" lines to commits, PRs or comments. Claude is never listed as a contributor.
