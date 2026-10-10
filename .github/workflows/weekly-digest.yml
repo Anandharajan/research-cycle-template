@@ -18,5 +18,5 @@ jobs:
             status, disclosure-gate status, open human gates, and the top 3 risks.
           claude_args: |
             --model claude-haiku-5-5
-            --max-turns 8
+            --max-turns 20
             --allowedTools "mcp__github__list_pull_requests,mcp__github__create_issue,Read"
