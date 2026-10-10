@@ -14,7 +14,8 @@ jobs:
       - name: Lint
         run: ruff check .
       - name: Type-check
-        run: if compgen -G "src/**/*.py" > /dev/null || ls src/*.py >/dev/null 2>&1; then mypy src; else echo "No Python in src/ yet"; fi
+        run: |
+          if [ -d src ] && [ -n "$(find src -name '*.py' -print -quit)" ]; then mypy src; else echo "No Python in src/ yet"; fi
       - name: Test
         run: |
-          if ls tests/*.py >/dev/null 2>&1; then pytest --cov=src --cov-fail-under=70; else echo "No tests yet (template)"; fi
+          if [ -d tests ] && [ -n "$(find tests -name '*.py' -print -quit)" ]; then pytest --cov=src --cov-fail-under=70; else echo "No tests yet (template)"; fi
